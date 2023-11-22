@@ -1,20 +1,32 @@
-class Car{
-    constructor(name){
-        this.brand = name;
-    }
-    present(){
-        return "I have a " + this.brand;
-    }
+// Superclass (or Parent class)
+class Animal {
+  constructor(name) {
+    this.name = name;
+  }
+  // // Methods
+  eat() {
+    console.log(`${this.name} is eating.`);
+  }
 }
-class Model extends Car{ //create a class inheritance, use the extends keyword
-    constructor(name, mod){
-        super(name); // used to call the constructor of its parent class to access the parent's properties and methods.
-        this.model = mod;
-    }
-    show(){
-        return this.present() + ", it is a " + this.model;
-    }
+
+// Subclass (or Child class) inheriting from Animal
+class Dog extends Animal {
+  constructor(name, breed) {
+    // Call the constructor of the superclass using super()
+    super(name);
+    this.breed = breed;
+  }
+
+  bark() {
+    console.log(`${this.name} is barking.`);
+  }
 }
-const myCar = new Model("Ford", "Mustang");
-// myCar.show();
-console.log(myCar.show());
+
+// Creating instances of the classes using 'new' keyword
+const genericAnimal = new Animal('Generic Animal');
+const myDog = new Dog('Buddy', 'Golden Retriever');
+
+// Using the instances
+genericAnimal.eat(); // Output: Generic Animal is eating.
+myDog.eat();        // Output: Buddy is eating.
+myDog.bark();       // Output: Buddy is barking.
