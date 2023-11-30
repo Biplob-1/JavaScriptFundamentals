@@ -1,4 +1,6 @@
 let colors =['red', 'green', 'blue', 'black'];
+console.log(colors); //Outputs: [ 'red', 'green', 'blue', 'black' ] 
+
 
 // To add an element to the end of an array using the push() method
 colors.push('yellow');
@@ -21,3 +23,17 @@ console.log(Array.isArray(colors));
 
 console.log(colors);
 console.log(index);
+
+
+				// sort()
+
+
+
+// sort() method sorts an array alphabetically
+const vegetables = ["alu", "potol", "begun", "morich"];
+let veg = vegetables.sort();
+console.log(veg); //Outputs: [ 'alu', 'begun', 'morich', 'potol' ] 
+
+
+
+// forEach(), map(), filter(); reduce() and sort()
