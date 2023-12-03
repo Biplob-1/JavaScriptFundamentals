@@ -27,3 +27,28 @@ do {
 	index++;
 } while (index<=5); //Outputs: 11
 
+
+				// for in loop
+const person ={
+	name: 'Biplob',
+	age : 27
+};
+
+for (let key in person) {
+	console.log(key, person[key]);
+	// console.log(key, person.key); //outputs: undefined
+};
+
+// Dot Notation
+// person.name;
+
+// Bracket Notation
+// person['age'];
+
+
+//for...of loop
+
+const colors =['red', 'blue', 'yellow' ];
+for(let color of colors){
+	console.log(color);
+};
