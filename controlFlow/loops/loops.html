@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook Sign Up</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #signup-form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .error-message {
+            color: red;
+            margin-top: 5px;
+        }
+
+        button {
+            background-color: #1877f2;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #14568f;
+        }
+    </style>
+</head>
+<body>
+    <div id="signup-form">
+        <h2 style="text-align: center;">Sign Up</h2>
+        <form>
+            <div class="form-group">
+                <label for="firstName">First Name:</label>
+                <input type="text" id="firstName" name="firstName" required>
+                <p class="error-message" id="error-firstName"></p>
+            </div>
+
+            <div class="form-group">
+                <label for="lastName">Last Name:</label>
+                <input type="text" id="lastName" name="lastName" required>
+                <p class="error-message" id="error-lastName"></p>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <p class="error-message" id="error-email"></p>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <p class="error-message" id="error-password"></p>
+            </div>
+            <div class="form-group">
+                <label for="birthdate">Birthdate:</label>
+                <input type="date" id="birthdate" name="birthdate" required>
+                <p class="error-message" id="error-birthdate"></p>
+            </div>
+
+            <button type="button" onclick="validateForm()">Sign Up</button>
+        </form>
+    </div>
+
+    <script>
+    const inputs = {
+        firstName: document.getElementById('firstName'),
+        lastName: document.getElementById('lastName'),
+        email: document.getElementById('email'),
+        password: document.getElementById('password'),
+        birthdate: document.getElementById('birthdate'),
+    };
+
+    const formData = {}; // Initialize an object to store form data
+
+    function validateField(input, errorElement, fieldName) {
+        const value = input.value.trim();
+        displayError(errorElement, value ? '' : `${fieldName} is required.`);
+        formData[fieldName] = value;
+    }
+
+    function validateForm() {
+        for (const [fieldName, input] of Object.entries(inputs)) {
+            validateField(input, `error-${fieldName}`, fieldName);
+        }
+
+        // Additional specific validation checks can be added here
+
+        const hasErrors = document.querySelector('.error-message:not(:empty)');
+        if (!hasErrors) {
+            alert('Form submitted successfully!');
+            console.log('Form Data:', formData); // Log form data to the console
+        }
+    }
+
+    function displayError(errorElement, message) {
+        document.getElementById(errorElement).textContent = message;
+    }
+
+    // Add event listeners for blur events on all input fields
+    for (const [fieldName, input] of Object.entries(inputs)) {
+        input.addEventListener('blur', () => validateField(input, `error-${fieldName}`, fieldName));
+    }
+</script>
+
+
+</body>
+</html>
